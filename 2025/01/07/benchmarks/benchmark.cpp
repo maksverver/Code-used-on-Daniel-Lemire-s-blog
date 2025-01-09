@@ -79,7 +79,7 @@ int main(int argc, char **argv) {
                     counter = counter + alternative_digit_count(v);
                   }
                 }));
-    pretty_print(data.size(), volume * sizeof(uint64_t), "fast_digit_count 32",
+    pretty_print(data.size(), volume * sizeof(uint32_t), "fast_digit_count 32",
                 bench([&data32, &counter]() {
                   for (auto v : data32) {
                     counter = counter + fast_digit_count(v);
