@@ -43,48 +43,47 @@ int main(int argc, char **argv) {
   volatile uint64_t counter = 0;
   for(size_t i = 0; i < 4; i++) {
     printf("Run %zu\n", i+1);
-  pretty_print(data.size(), volume * sizeof(uint64_t), "digit_count",
-               bench([&data, &counter]() {
-                 for (auto v : data) {
-                   counter = counter + digit_count(v);
-                 }
-               }));
-  pretty_print(data.size(), volume * sizeof(uint64_t), "alternative_digit_count",
-               bench([&data, &counter]() {
-                 for (auto v : data) {
-                   counter = counter + alternative_digit_count(v);
-                 }
-               }));
-  pretty_print(data.size(), volume * sizeof(uint64_t), "split_table_digit_count",
-               bench([&data, &counter]() {
-                 for (auto v : data) {
-                   counter = counter + split_table_digit_count(v);
-                 }
-               }));
-  pretty_print(data.size(), volume * sizeof(uint64_t), "fast_digit_count",
-               bench([&data, &counter]() {
-                 for (auto v : data) {
-                   counter = counter + fast_digit_count(v);
-                 }
-               }));
-  pretty_print(data.size(), volume * sizeof(uint32_t), "digit_count 32",
-               bench([&data32, &counter]() {
-                 for (auto v : data32) {
-                   counter = counter + digit_count(v);
-                 }
-               }));
-  pretty_print(data.size(), volume * sizeof(uint32_t), "alternative_digit_count 32",
-               bench([&data32, &counter]() {
-                 for (auto v : data32) {
-                   counter = counter + alternative_digit_count(v);
-                 }
-               }));
+    pretty_print(data.size(), volume * sizeof(uint64_t), "digit_count",
+                bench([&data, &counter]() {
+                  for (auto v : data) {
+                    counter = counter + digit_count(v);
+                  }
+                }));
+    pretty_print(data.size(), volume * sizeof(uint64_t), "alternative_digit_count",
+                bench([&data, &counter]() {
+                  for (auto v : data) {
+                    counter = counter + alternative_digit_count(v);
+                  }
+                }));
+    pretty_print(data.size(), volume * sizeof(uint64_t), "split_table_digit_count",
+                bench([&data, &counter]() {
+                  for (auto v : data) {
+                    counter = counter + split_table_digit_count(v);
+                  }
+                }));
+    pretty_print(data.size(), volume * sizeof(uint64_t), "fast_digit_count",
+                bench([&data, &counter]() {
+                  for (auto v : data) {
+                    counter = counter + fast_digit_count(v);
+                  }
+                }));
+    pretty_print(data.size(), volume * sizeof(uint32_t), "digit_count 32",
+                bench([&data32, &counter]() {
+                  for (auto v : data32) {
+                    counter = counter + digit_count(v);
+                  }
+                }));
+    pretty_print(data.size(), volume * sizeof(uint32_t), "alternative_digit_count 32",
+                bench([&data32, &counter]() {
+                  for (auto v : data32) {
+                    counter = counter + alternative_digit_count(v);
+                  }
+                }));
+    pretty_print(data.size(), volume * sizeof(uint64_t), "fast_digit_count 32",
+                bench([&data32, &counter]() {
+                  for (auto v : data32) {
+                    counter = counter + fast_digit_count(v);
+                  }
+                }));
   }
-  pretty_print(data.size(), volume * sizeof(uint64_t), "fast_digit_count 32",
-               bench([&data32, &counter]() {
-                 for (auto v : data32) {
-                   counter = counter + fast_digit_count(v);
-                 }
-               }));
-
 }
